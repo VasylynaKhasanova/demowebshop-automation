@@ -3,6 +3,9 @@ package org.loginTests;
 import org.baseTest.BaseTest;
 import org.junit.Test;
 
+import static org.data.TestData.VALID_EMAIL;
+import static org.data.TestData.VALID_PASSWORD;
+
 public class LoginTest extends BaseTest {
 
     @Test
@@ -12,8 +15,8 @@ public class LoginTest extends BaseTest {
                 .getHeaderElement()
                 .clickOnButtonLogIn()
                 .checkIsRedirectToLoginPage()
-                .enterTextIntoInputEmail("autotestva@gmail.com")
-                .enterTextIntoInputPassword("ewedce33434")
+                .enterTextIntoInputEmail(VALID_EMAIL)
+                .enterTextIntoInputPassword(VALID_PASSWORD)
                 .clickOnButtonLogIn()
                 .checkIsRedirectToHomePage()
                 .checkIsWelcomeMessageVisible()
