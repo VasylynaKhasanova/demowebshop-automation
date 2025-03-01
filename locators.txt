@@ -1,11 +1,11 @@
 #Header
 href.customer_info = "//div[@class="header-links"]//a[@href="/customer/info"]"
 href.logout = "//a[@href="/logout"]"
+href.login = "//a[@href="/login"]"
+href.register = "//a[@href="/register"]"
 
 
 #Home page
-href.login = "//a[@href="/login"]"
-href.register = "//a[@href="/register"]"
 h2.welcome_message = "//h2[@class="topic-html-content-header"]"
 
 #Registration page
