@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
+import org.pages.LoginPage;
 
 public class HeaderElements extends CommonActionsWithElements {
 
@@ -23,8 +24,14 @@ public class HeaderElements extends CommonActionsWithElements {
         super(webDriver);
     }
 
-    public void clickOnButtonLogIn() {
+    public LoginPage clickOnButtonLogIn() {
         clickOnElement(buttonLogIn);
+        return new LoginPage(webDriver);
+    }
+
+    // check is button log in invisible
+    public void checkIsButtonLogInInvisible() {
+        checkIsElementInvisible(buttonLogIn);
     }
 
     public void clickOnButtonRegister() {

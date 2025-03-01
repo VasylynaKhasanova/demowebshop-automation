@@ -26,10 +26,23 @@ public class LoginPage extends ParentPage {
         return "/login";
     }
 
-    public LoginPage openPage() {
-        webDriver.get(baseUrl);
-        logger.info("Login Page was opened with url " + baseUrl);
+    public LoginPage checkIsRedirectToLoginPage() {
+        checkUrl();
         return this;
     }
 
+    public LoginPage enterTextIntoInputEmail(String email) {
+        clearAndEnterTextIntoElement(inputEmail, email);
+        return this;
+    }
+
+    public LoginPage enterTextIntoInputPassword(String password) {
+        clearAndEnterTextIntoElement(inputPassword, password);
+        return this;
+    }
+
+    public HomePage clickOnButtonLogIn() {
+        clickOnElement(buttonLogIn);
+        return new HomePage(webDriver);
+    }
 }

@@ -10,12 +10,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.pages.PageProvider;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     private WebDriver webDriver;
     private Logger logger = Logger.getLogger(getClass());
+    protected PageProvider pageProvider;
 
     @Before
     public void setup() {
@@ -23,6 +25,7 @@ public class BaseTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         logger.info("Browser was opened");
+        pageProvider = new PageProvider(webDriver);
     }
 
     @After
