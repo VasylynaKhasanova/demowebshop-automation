@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 abstract class ParentPage extends CommonActionsWithElements {
-    protected String baseUrl = "https://demowebshop.tricentis.com/";
+    protected String baseUrl = "https://demowebshop.tricentis.com";
     private Logger logger = Logger.getLogger(getClass());
 
     public ParentPage(WebDriver webDriver) {
