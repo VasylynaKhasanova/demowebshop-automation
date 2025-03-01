@@ -24,13 +24,12 @@ public class HeaderElements extends CommonActionsWithElements {
         super(webDriver);
     }
 
-    public LoginPage clickOnButtonLogIn() {
+    public LoginPage clickOnHeaderButtonLogIn() {
         clickOnElement(buttonLogIn);
         return new LoginPage(webDriver);
     }
 
-    // check is button log in invisible
-    public void checkIsButtonLogInInvisible() {
+    public void checkIsHeaderButtonLogInInvisible() {
         checkIsElementInvisible(buttonLogIn);
     }
 
@@ -38,8 +37,16 @@ public class HeaderElements extends CommonActionsWithElements {
         clickOnElement(buttonRegister);
     }
 
+    public void checkIsButtonRegisterVisible() {
+        checkIsElementVisible(buttonRegister);
+    }
+
     public void clickOnButtonLogOut() {
         clickOnElement(buttonLogOut);
+    }
+
+    public void checkIsButtonLogOutInvisible() {
+        checkIsElementInvisible(buttonLogOut);
     }
 
     public void checkIsButtonLogOutVisible() {
