@@ -68,4 +68,27 @@ public class LoginTest extends BaseTest {
 
         pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
     }
+
+    @Test
+    public void T0005_loginWithInvalidEmailTest() {
+        pageProvider.getHomePage()
+                .openHomePage()
+                .getHeaderElement()
+                .clickOnHeaderButtonLogIn()
+                .checkIsRedirectToLoginPage()
+                .enterTextIntoInputEmail("3333")
+                .enterTextIntoInputPassword(VALID_PASSWORD)
+                .clickOnButtonLogIn()
+                .getHeaderElement()
+                .checkIsButtonRegisterVisible();
+
+        pageProvider.getLoginPage()
+                .checkIsRedirectToLoginPage()
+                .checkIsInvalidEmailErrorIsVisible()
+                .checkInvalidEmailErrorText("Please enter a valid email address.")
+                .checkIsLogInButtonVisible()
+        ;
+
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
+    }
 }
