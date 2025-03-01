@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.data.LoginAuthenticationErrors;
 import org.junit.runner.RunWith;
 
-import static org.data.TestData.VALID_EMAIL;
+import static org.data.TestData.*;
 
 @RunWith(JUnitParamsRunner.class)
 public class AuthenticationErrorsTest extends BaseTest {
@@ -28,8 +28,8 @@ public class AuthenticationErrorsTest extends BaseTest {
 
     public Object[][] parametersForAuthenticationErrorTest() {
         return new Object[][]{
-                {VALID_EMAIL, "invalidPassword2324", LoginAuthenticationErrors.INCORRECT_CREDENTIALS},
-                {"notRegisteredEmail@gmail.com", "invalidPassword2324", LoginAuthenticationErrors.NO_CUSTOMER_ACCOUNT}
+                {VALID_EMAIL, INVALID_PASSWORD, LoginAuthenticationErrors.INCORRECT_CREDENTIALS},
+                {NOT_REGISTERED_EMAIL, INVALID_PASSWORD, LoginAuthenticationErrors.NO_CUSTOMER_ACCOUNT}
         };
     }
 

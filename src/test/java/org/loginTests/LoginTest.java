@@ -2,9 +2,7 @@ package org.loginTests;
 
 import org.baseTest.BaseTest;
 import org.junit.Test;
-
-import static org.data.TestData.VALID_EMAIL;
-import static org.data.TestData.VALID_PASSWORD;
+import static org.data.TestData.*;
 
 public class LoginTest extends BaseTest {
 
@@ -35,7 +33,7 @@ public class LoginTest extends BaseTest {
                 .clickOnHeaderButtonLogIn()
                 .checkIsRedirectToLoginPage()
                 .enterTextIntoInputEmail(VALID_EMAIL)
-                .enterTextIntoInputPassword("invalidPassword2324")
+                .enterTextIntoInputPassword(INVALID_PASSWORD)
                 .clickOnButtonLogIn()
                 .getHeaderElement()
                 .checkIsButtonRegisterVisible();
@@ -65,6 +63,29 @@ public class LoginTest extends BaseTest {
         pageProvider.getLoginPage()
                 .checkIsRedirectToLoginPage()
                 .checkIsNoCustomerAccountErrorVisible()
+                .checkIsLogInButtonVisible()
+        ;
+
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
+    }
+
+    @Test
+    public void T0005_loginWithInvalidEmailTest() {
+        pageProvider.getHomePage()
+                .openHomePage()
+                .getHeaderElement()
+                .clickOnHeaderButtonLogIn()
+                .checkIsRedirectToLoginPage()
+                .enterTextIntoInputEmail("3333")
+                .enterTextIntoInputPassword(VALID_PASSWORD)
+                .clickOnButtonLogIn()
+                .getHeaderElement()
+                .checkIsButtonRegisterVisible();
+
+        pageProvider.getLoginPage()
+                .checkIsRedirectToLoginPage()
+                .checkIsInvalidEmailErrorIsVisible()
+                .checkInvalidEmailErrorText("Please enter a valid email address.")
                 .checkIsLogInButtonVisible()
         ;
 

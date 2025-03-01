@@ -26,7 +26,10 @@ public class LoginPage extends ParentPage {
     private WebElement noCustomerAccountError;
 
     @FindBy(xpath = "//div[@class='validation-summary-errors']//li")
-    private WebElement errorMessage;
+    private WebElement authenticationErrorMessage;
+
+    @FindBy(xpath = "//span[@for='Email']")
+    private WebElement invalidEmailError;
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
@@ -73,9 +76,9 @@ public class LoginPage extends ParentPage {
     }
 
     public LoginPage checkAuthenticationErrorsText(String expectedError) {
-        webDriverWait15.until(ExpectedConditions.visibilityOf(errorMessage));
+        webDriverWait15.until(ExpectedConditions.visibilityOf(authenticationErrorMessage));
 
-        String actualErrorText = errorMessage.getText();
+        String actualErrorText = authenticationErrorMessage.getText();
         logger.info("Verifying error message: '" + actualErrorText + "' (Expected: '" + expectedError + "')");
 
         SoftAssertions softAssertions = new SoftAssertions();
@@ -85,6 +88,16 @@ public class LoginPage extends ParentPage {
                 .isEqualTo(expectedError);
 
         softAssertions.assertAll();
+        return this;
+    }
+
+    public LoginPage checkInvalidEmailErrorText(String expectedError) {
+        checkTextInElement(invalidEmailError, expectedError);
+        return this;
+    }
+
+    public LoginPage checkIsInvalidEmailErrorIsVisible() {
+        checkIsElementVisible(invalidEmailError);
         return this;
     }
 
