@@ -15,6 +15,7 @@ abstract class ParentPage extends CommonActionsWithElements {
     abstract protected String getRelativeUrl();
 
     protected void checkUrl() {
+        logger.info("Expected url is opened: " + baseUrl + getRelativeUrl());
         Assert.assertEquals("URL is not expected",
                 baseUrl + getRelativeUrl(),
                 webDriver.getCurrentUrl());

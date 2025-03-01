@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
         pageProvider.getHomePage()
                 .openHomePage()
                 .getHeaderElement()
-                .clickOnButtonLogIn()
+                .clickOnHeaderButtonLogIn()
                 .checkIsRedirectToLoginPage()
                 .enterTextIntoInputEmail(VALID_EMAIL)
                 .enterTextIntoInputPassword(VALID_PASSWORD)
@@ -24,6 +24,50 @@ public class LoginTest extends BaseTest {
                 .checkIsButtonLogOutVisible();
 
         pageProvider.getHomePage().getHeaderElement().checkIsButtonCustomerInfoVisible();
-        pageProvider.getHomePage().getHeaderElement().checkIsButtonLogInInvisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsHeaderButtonLogInInvisible();
+    }
+
+    @Test
+    public void T0002_loginWithInvalidPasswordTest() {
+        pageProvider.getHomePage()
+                .openHomePage()
+                .getHeaderElement()
+                .clickOnHeaderButtonLogIn()
+                .checkIsRedirectToLoginPage()
+                .enterTextIntoInputEmail(VALID_EMAIL)
+                .enterTextIntoInputPassword("invalidPassword2324")
+                .clickOnButtonLogIn()
+                .getHeaderElement()
+                .checkIsButtonRegisterVisible();
+
+        pageProvider.getLoginPage()
+                .checkIsRedirectToLoginPage()
+                .checkIsIncorrectCredentialsErrorVisible()
+                .checkIsLogInButtonVisible()
+        ;
+
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
+    }
+
+    @Test
+    public void T0002_loginWithNotRegisteredEmailTest() {
+        pageProvider.getHomePage()
+                .openHomePage()
+                .getHeaderElement()
+                .clickOnHeaderButtonLogIn()
+                .checkIsRedirectToLoginPage()
+                .enterTextIntoInputEmail("notRegisteredEmail@gmail.com")
+                .enterTextIntoInputPassword("invalidPassword2324")
+                .clickOnButtonLogIn()
+                .getHeaderElement()
+                .checkIsButtonRegisterVisible();
+
+        pageProvider.getLoginPage()
+                .checkIsRedirectToLoginPage()
+                .checkIsNoCustomerAccountErrorVisible()
+                .checkIsLogInButtonVisible()
+        ;
+
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
     }
 }

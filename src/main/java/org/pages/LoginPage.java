@@ -17,6 +17,12 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = "//input[@value='Log in']")
     private WebElement buttonLogIn;
 
+    @FindBy(xpath = "//li[text()='The credentials provided are incorrect']")
+    private WebElement incorrectCredentialsError;
+
+    @FindBy(xpath = "//li[text()='No customer account found']")
+    private WebElement noCustomerAccountError;
+
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -44,5 +50,20 @@ public class LoginPage extends ParentPage {
     public HomePage clickOnButtonLogIn() {
         clickOnElement(buttonLogIn);
         return new HomePage(webDriver);
+    }
+
+    public LoginPage checkIsLogInButtonVisible() {
+        checkIsElementVisible(buttonLogIn);
+        return this;
+    }
+
+    public LoginPage checkIsIncorrectCredentialsErrorVisible() {
+        checkIsElementVisible(incorrectCredentialsError);
+        return this;
+    }
+
+    public LoginPage checkIsNoCustomerAccountErrorVisible() {
+        checkIsElementVisible(noCustomerAccountError);
+        return this;
     }
 }
