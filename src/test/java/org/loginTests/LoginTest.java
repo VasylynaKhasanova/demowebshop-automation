@@ -2,9 +2,7 @@ package org.loginTests;
 
 import org.baseTest.BaseTest;
 import org.junit.Test;
-
-import static org.data.TestData.VALID_EMAIL;
-import static org.data.TestData.VALID_PASSWORD;
+import static org.data.TestData.*;
 
 public class LoginTest extends BaseTest {
 
@@ -35,7 +33,7 @@ public class LoginTest extends BaseTest {
                 .clickOnHeaderButtonLogIn()
                 .checkIsRedirectToLoginPage()
                 .enterTextIntoInputEmail(VALID_EMAIL)
-                .enterTextIntoInputPassword("invalidPassword2324")
+                .enterTextIntoInputPassword(INVALID_PASSWORD)
                 .clickOnButtonLogIn()
                 .getHeaderElement()
                 .checkIsButtonRegisterVisible();
