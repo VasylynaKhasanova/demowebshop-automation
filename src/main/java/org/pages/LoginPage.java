@@ -1,9 +1,11 @@
 package org.pages;
 
 import org.apache.log4j.Logger;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends ParentPage {
     private Logger logger = Logger.getLogger(getClass());
@@ -22,6 +24,9 @@ public class LoginPage extends ParentPage {
 
     @FindBy(xpath = "//li[text()='No customer account found']")
     private WebElement noCustomerAccountError;
+
+    @FindBy(xpath = "//div[@class='validation-summary-errors']//li")
+    private WebElement errorMessage;
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
@@ -66,4 +71,21 @@ public class LoginPage extends ParentPage {
         checkIsElementVisible(noCustomerAccountError);
         return this;
     }
+
+    public LoginPage checkValidationErrorsText(String expectedError) {
+        webDriverWait15.until(ExpectedConditions.visibilityOf(errorMessage));
+
+        String actualErrorText = errorMessage.getText();
+        logger.info("Verifying error message: '" + actualErrorText + "' (Expected: '" + expectedError + "')");
+
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        softAssertions.assertThat(actualErrorText)
+                .as("Check error message")
+                .isEqualTo(expectedError);
+
+        softAssertions.assertAll();
+        return this;
+    }
+
 }
