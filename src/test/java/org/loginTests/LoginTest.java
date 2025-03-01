@@ -50,7 +50,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void T0002_loginWithNotRegisteredEmailTest() {
+    public void T0003_loginWithNotRegisteredEmailTest() {
         pageProvider.getHomePage()
                 .openHomePage()
                 .getHeaderElement()
