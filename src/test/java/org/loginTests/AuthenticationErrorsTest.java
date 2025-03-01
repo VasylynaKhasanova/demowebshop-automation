@@ -4,17 +4,17 @@ import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.baseTest.BaseTest;
 import org.junit.Test;
-import org.data.LoginValidationErrors;
+import org.data.LoginAuthenticationErrors;
 import org.junit.runner.RunWith;
 
 import static org.data.TestData.VALID_EMAIL;
 
 @RunWith(JUnitParamsRunner.class)
-public class ValidationErrorsTest extends BaseTest {
+public class AuthenticationErrorsTest extends BaseTest {
 
         @Test
         @Parameters(method = "parametersForValidationErrorTest")
-        public void T0004_validationErrorTest( String email, String password, String expectedMessage) {
+        public void T0004_authenticationErrorTest(String email, String password, String expectedMessage) {
             pageProvider.getHomePage()
                     .openHomePage()
                     .getHeaderElement()
@@ -23,13 +23,13 @@ public class ValidationErrorsTest extends BaseTest {
                     .enterTextIntoInputEmail(email)
                     .enterTextIntoInputPassword(password)
                     .clickOnButtonLogIn();
-            pageProvider.getLoginPage().checkValidationErrorsText(expectedMessage);
+            pageProvider.getLoginPage().checkAuthenticationErrorsText(expectedMessage);
         }
 
-    public Object[][] parametersForValidationErrorTest() {
+    public Object[][] parametersForAuthenticationErrorTest() {
         return new Object[][]{
-                {VALID_EMAIL, "invalidPassword2324", LoginValidationErrors.INCORRECT_CREDENTIALS},
-                {"notRegisteredEmail@gmail.com", "invalidPassword2324", LoginValidationErrors.NO_CUSTOMER_ACCOUNT}
+                {VALID_EMAIL, "invalidPassword2324", LoginAuthenticationErrors.INCORRECT_CREDENTIALS},
+                {"notRegisteredEmail@gmail.com", "invalidPassword2324", LoginAuthenticationErrors.NO_CUSTOMER_ACCOUNT}
         };
     }
 

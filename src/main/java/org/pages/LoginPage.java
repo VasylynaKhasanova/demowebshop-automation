@@ -72,7 +72,7 @@ public class LoginPage extends ParentPage {
         return this;
     }
 
-    public LoginPage checkValidationErrorsText(String expectedError) {
+    public LoginPage checkAuthenticationErrorsText(String expectedError) {
         webDriverWait15.until(ExpectedConditions.visibilityOf(errorMessage));
 
         String actualErrorText = errorMessage.getText();
