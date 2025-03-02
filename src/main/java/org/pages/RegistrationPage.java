@@ -1,10 +1,13 @@
 package org.pages;
 
+import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends ParentPage {
+    private Logger logger = Logger.getLogger(getClass());
 
     @FindBy(xpath = "//input[@id='gender-male']")
     private WebElement radioButtonMale;
@@ -39,13 +42,15 @@ public class RegistrationPage extends ParentPage {
         return "/register";
     }
 
-    public RegistrationPage clickOnRadioButtonMale() {
-        clickOnElement(radioButtonMale);
-        return this;
-    }
-
-    public RegistrationPage clickOnRadioButtonFemale() {
-        clickOnElement(radioButtonFemale);
+    public RegistrationPage clickOnGenderRadioButton(String gender) {
+        if (gender.equals("Male")) {
+            clickOnElement(radioButtonMale);
+        } else if (gender.equals("Female")) {
+            clickOnElement(radioButtonFemale);
+        } else {
+            logger.error("Gender should be only 'Male' or 'Female'");
+            Assert.fail("Gender should be only 'Male' or 'Female'");
+        }
         return this;
     }
 
@@ -74,9 +79,13 @@ public class RegistrationPage extends ParentPage {
         return this;
     }
 
-    public HomePage clickOnButtonRegister() {
+    public RegistartionResultPage clickOnButtonRegister() {
         clickOnElement(buttonRegister);
-        return new HomePage(webDriver);
+        return new RegistartionResultPage(webDriver);
     }
 
+    public RegistrationPage checkIsRedirectToRegistrationPage() {
+        checkUrl();
+        return this;
+    }
 }
