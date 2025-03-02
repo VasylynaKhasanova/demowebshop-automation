@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
+import org.pages.HomePage;
 import org.pages.LoginPage;
 
 public class HeaderElements extends CommonActionsWithElements {
@@ -33,6 +34,10 @@ public class HeaderElements extends CommonActionsWithElements {
         checkIsElementInvisible(buttonLogIn);
     }
 
+    public void checkIsHeaderButtonLogInVisible() {
+        checkIsElementVisible(buttonLogIn);
+    }
+
     public void clickOnButtonRegister() {
         clickOnElement(buttonRegister);
     }
@@ -41,8 +46,9 @@ public class HeaderElements extends CommonActionsWithElements {
         checkIsElementVisible(buttonRegister);
     }
 
-    public void clickOnButtonLogOut() {
+    public HomePage clickOnButtonLogOut() {
         clickOnElement(buttonLogOut);
+        return new HomePage(webDriver);
     }
 
     public void checkIsButtonLogOutInvisible() {
@@ -61,5 +67,7 @@ public class HeaderElements extends CommonActionsWithElements {
         checkIsElementVisible(buttonCustomerInfo);
     }
 
-
+    public void checkIsButtonCustomerInfoInvisible() {
+        checkIsElementInvisible(buttonCustomerInfo);
+    }
 }

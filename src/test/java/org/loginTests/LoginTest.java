@@ -2,6 +2,7 @@ package org.loginTests;
 
 import org.baseTest.BaseTest;
 import org.junit.Test;
+
 import static org.data.TestData.*;
 
 public class LoginTest extends BaseTest {
@@ -91,4 +92,23 @@ public class LoginTest extends BaseTest {
 
         pageProvider.getHomePage().getHeaderElement().checkIsButtonLogOutInvisible();
     }
+
+    @Test
+    public void T0006_validLogOutTest() {
+        pageProvider.getLoginPage().
+                openLoginPageAndFillLoginFormWithValidCred()
+                .checkIsRedirectToHomePage()
+                .getHeaderElement()
+                .checkIsButtonLogOutVisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonCustomerInfoVisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsHeaderButtonLogInInvisible();
+        pageProvider.getHomePage().getHeaderElement().clickOnButtonLogOut()
+                .checkIsRedirectToHomePage()
+                .getHeaderElement()
+                .checkIsButtonLogOutInvisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonRegisterVisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsHeaderButtonLogInVisible();
+        pageProvider.getHomePage().getHeaderElement().checkIsButtonCustomerInfoInvisible();
+    }
+
 }
