@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 import org.pages.HomePage;
 import org.pages.LoginPage;
+import org.pages.RegistrationPage;
 
 public class HeaderElements extends CommonActionsWithElements {
 
@@ -38,8 +39,9 @@ public class HeaderElements extends CommonActionsWithElements {
         checkIsElementVisible(buttonLogIn);
     }
 
-    public void clickOnButtonRegister() {
+    public RegistrationPage clickOnButtonRegister() {
         clickOnElement(buttonRegister);
+        return new RegistrationPage(webDriver);
     }
 
     public void checkIsButtonRegisterVisible() {
