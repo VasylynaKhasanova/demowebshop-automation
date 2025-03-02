@@ -87,5 +87,4 @@ public class CommonActionsWithElements {
         logger.info("Text in element " + getElementName(webElement) + " is as expected");
     }
 
-
 }

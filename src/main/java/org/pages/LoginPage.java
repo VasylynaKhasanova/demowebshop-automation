@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.data.TestData.VALID_EMAIL;
+import static org.data.TestData.VALID_PASSWORD;
+
 public class LoginPage extends ParentPage {
     private Logger logger = Logger.getLogger(getClass());
 
@@ -99,6 +102,20 @@ public class LoginPage extends ParentPage {
     public LoginPage checkIsInvalidEmailErrorIsVisible() {
         checkIsElementVisible(invalidEmailError);
         return this;
+    }
+
+    public LoginPage openLoginPage() {
+        webDriver.get(baseUrl + getRelativeUrl());
+        logger.info("Home Page was opened with url " + baseUrl+getRelativeUrl());
+        return this;
+    }
+
+    public HomePage openLoginPageAndFillLoginFormWithValidCred() {
+        openLoginPage();
+        enterTextIntoInputEmail(VALID_EMAIL);
+        enterTextIntoInputPassword(VALID_PASSWORD);
+        clickOnButtonLogIn();
+        return new HomePage(webDriver);
     }
 
 }
