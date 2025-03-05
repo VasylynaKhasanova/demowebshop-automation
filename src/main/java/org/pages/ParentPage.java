@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-abstract class ParentPage extends CommonActionsWithElements {
+public abstract class ParentPage extends CommonActionsWithElements {
     protected String baseUrl = "https://demowebshop.tricentis.com";
     private Logger logger = Logger.getLogger(getClass());
 
