@@ -87,4 +87,13 @@ public class CommonActionsWithElements {
         logger.info("Text in element " + getElementName(webElement) + " is as expected");
     }
 
+    protected void makeCheckboxChecked(WebElement webElement) {
+        if (webElement.isSelected()) {
+            logger.info("Checkbox is already checked");
+        } else {
+            clickOnElement(webElement);
+            logger.info("Checkbox is checked");
+        }
+    }
+
 }

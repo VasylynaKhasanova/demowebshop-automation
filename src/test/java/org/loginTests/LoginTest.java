@@ -111,4 +111,5 @@ public class LoginTest extends BaseTest {
         pageProvider.getHomePage().getHeaderElement().checkIsButtonCustomerInfoInvisible();
     }
 
+
 }

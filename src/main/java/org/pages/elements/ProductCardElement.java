@@ -1,9 +1,12 @@
-package org.pages.categories;
+package org.pages.elements;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.pages.CommonActionsWithElements;
 
-public class ProductCard {
+public class ProductCardElement extends CommonActionsWithElements {
+
     @FindBy(xpath = "//h2[@class='product-title']/a")
     private WebElement productName;
 
@@ -22,4 +25,18 @@ public class ProductCard {
     @FindBy(xpath = "//input[@value='Add to cart']")
     private WebElement addToCartButton;
 
+    private WebElement productCardElement;
+
+    public ProductCardElement(WebDriver webDriver, WebElement productCardElement) {
+        super(webDriver);
+        this.productCardElement = productCardElement;
+    }
+
+    public void clickOnAddToCart() {
+        clickOnElement(addToCartButton);
+    }
+
+    public void checkIsAddToCartButtonVisible() {
+        checkIsElementVisible(addToCartButton);
+    }
 }

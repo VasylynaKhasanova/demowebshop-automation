@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.elements.HeaderElements;
+import org.pages.elements.NavigationMenuElement;
 
 public class HomePage extends ParentPage {
     private Logger logger = Logger.getLogger(getClass());
@@ -39,5 +40,9 @@ public class HomePage extends ParentPage {
     public HomePage checkIsWelcomeMessageVisible() {
         checkIsElementVisible(welcomeMessage);
         return this;
+    }
+
+    public NavigationMenuElement getNavigationMenuElement() {
+        return new NavigationMenuElement(webDriver);
     }
 }
