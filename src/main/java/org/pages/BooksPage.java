@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.pages.elements.ProductCardElement;
+import org.pages.elements.ProductCardElements;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public class BooksPage extends ParentPage {
         return "/books";
     }
 
-    public List<ProductCardElement> getAllProductCards() {
-        List<ProductCardElement> cards = new ArrayList<>();
+    public List<ProductCardElements> getAllProductCards() {
+        List<ProductCardElements> cards = new ArrayList<>();
 
         for (WebElement card : productCards) {
-            cards.add(new ProductCardElement(webDriver, card));
+            cards.add(new ProductCardElements(webDriver, card));
         }
         return cards;
 
@@ -36,10 +36,15 @@ public class BooksPage extends ParentPage {
 
     public void addFirstProductToShoppingCart() {
         if (!productCards.isEmpty()) {
-            ProductCardElement firstCard = new ProductCardElement(webDriver, productCards.get(0));
+            ProductCardElements firstCard = new ProductCardElements(webDriver, productCards.get(0));
             firstCard.clickOnAddToCart();
         } else {
             logger.info("No product cards found on the page.");
         }
+    }
+
+    public BooksPage checkIsRedirectToBooksPage() {
+        checkUrl();
+        return this;
     }
 }

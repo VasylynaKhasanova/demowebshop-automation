@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -93,6 +94,16 @@ public class CommonActionsWithElements {
         } else {
             clickOnElement(webElement);
             logger.info("Checkbox is checked");
+        }
+    }
+
+    protected void selectValueInDropDawn(WebElement dropDownElement, String valueInDD) {
+        try {
+            Select optionsFromDD = new Select(dropDownElement);
+            optionsFromDD.selectByValue(valueInDD);
+            logger.info(valueInDD + " value is selected in DropDown " + getElementName(dropDownElement));
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
         }
     }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
-public class ProductCardElement extends CommonActionsWithElements {
+public class ProductCardElements extends CommonActionsWithElements {
 
     @FindBy(xpath = "//h2[@class='product-title']/a")
     private WebElement productName;
@@ -27,7 +27,7 @@ public class ProductCardElement extends CommonActionsWithElements {
 
     private WebElement productCardElement;
 
-    public ProductCardElement(WebDriver webDriver, WebElement productCardElement) {
+    public ProductCardElements(WebDriver webDriver, WebElement productCardElement) {
         super(webDriver);
         this.productCardElement = productCardElement;
     }
