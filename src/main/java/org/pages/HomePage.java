@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.elements.HeaderElements;
-import org.pages.elements.NavigationMenuElement;
+import org.pages.elements.NavigationMenuElements;
 
 public class HomePage extends ParentPage {
     private Logger logger = Logger.getLogger(getClass());
@@ -42,7 +42,7 @@ public class HomePage extends ParentPage {
         return this;
     }
 
-    public NavigationMenuElement getNavigationMenuElement() {
-        return new NavigationMenuElement(webDriver);
+    public NavigationMenuElements getNavigationMenuElement() {
+        return new NavigationMenuElements(webDriver);
     }
 }

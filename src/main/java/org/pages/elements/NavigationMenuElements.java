@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
-public class NavigationMenuElement extends CommonActionsWithElements {
+public class NavigationMenuElements extends CommonActionsWithElements {
     @FindBy(xpath = "//ul[@class='top-menu']//a[@href='/books']")
     private WebElement buttonBooks;
 
-    public NavigationMenuElement(WebDriver webDriver) {
+    public NavigationMenuElements(WebDriver webDriver) {
         super(webDriver);
     }
 
