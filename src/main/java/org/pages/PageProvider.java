@@ -28,4 +28,10 @@ public class PageProvider {
     public CheckoutPage getCheckoutPage() {
         return new CheckoutPage(webDriver);
     }
+
+    public CompletedCheckoutPage getCompletedCheckoutPage() {
+        return new CompletedCheckoutPage(webDriver);
+    }
+
+
 }

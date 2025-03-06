@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class BillingAddressElements extends CommonActionsWithElements {
-    @FindBy(xpath = "//h2[text()='Billing address']")
+    @FindBy(xpath = "//li[@class='tab-section allow active']//h2[text()='Billing address']")
     private WebElement billingAddressTitle;
 
     @FindBy(id = "BillingNewAddress_FirstName")
@@ -48,6 +48,9 @@ public class BillingAddressElements extends CommonActionsWithElements {
     @FindBy(xpath = "//div[@id='billing-buttons-container']//input[@title='Continue']")
     private WebElement billingAddressContinueButton;
 
+    @FindBy(id="billing-address-select")
+    private WebElement billingAddressDropdown;
+
     public BillingAddressElements(WebDriver webDriver) {
         super(webDriver);
     }
@@ -69,11 +72,11 @@ public class BillingAddressElements extends CommonActionsWithElements {
     }
 
     public void selectCountry(String country) {
-        selectValueInDropDawn(countryDropDown, country);
+        selectValueInDropdown(countryDropDown, country);
     }
 
     public void selectState(String state) {
-        selectValueInDropDawn(stateDropDown, state);
+        selectValueInDropdown(stateDropDown, state);
     }
 
     public void enterCity(String city) {
@@ -123,5 +126,16 @@ public class BillingAddressElements extends CommonActionsWithElements {
         enterPhoneNumber(phoneNumber);
         enterFaxNumber(faxNumber);
         return this;
+    }
+
+
+  public void selectValueInBillingAddressDropdown(String address) {
+    selectValueInDropdown(billingAddressDropdown, address);
+  }
+
+    public void selectValueInBillingAddressDropdownIfItVisible (String address) {
+        if (isElementVisible(billingAddressDropdown)) {
+            selectValueInBillingAddressDropdown(address);
+        }
     }
 }

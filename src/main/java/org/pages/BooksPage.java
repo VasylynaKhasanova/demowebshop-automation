@@ -71,4 +71,5 @@ public class BooksPage extends ParentPage {
         checkTextInElement(productAddedToCartSuccessMessage, "The product has been added to your shopping cart");
     }
 
+
 }

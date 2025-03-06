@@ -97,7 +97,7 @@ public class CommonActionsWithElements {
         }
     }
 
-    protected void selectValueInDropDawn(WebElement dropDownElement, String valueInDD) {
+    protected void selectValueInDropdown(WebElement dropDownElement, String valueInDD) {
         try {
             Select optionsFromDD = new Select(dropDownElement);
             optionsFromDD.selectByValue(valueInDD);

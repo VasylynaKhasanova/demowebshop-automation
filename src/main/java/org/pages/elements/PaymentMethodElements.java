@@ -6,11 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class PaymentMethodElements extends CommonActionsWithElements {
+    @FindBy(xpath = "//li[@class='tab-section allow active']//h2[text()='Payment method']")
+    private WebElement paymentMethodTitle;
+
     @FindBy(id="paymentmethod_0")
     private WebElement cashOnDeliveryPaymentMethod;
 
-    @FindBy(xpath = "//input[@value='Continue']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//div[@id='payment-method-buttons-container']//input[@value='Continue']")
+    private WebElement paymentMethodContinueButton;
 
     public PaymentMethodElements(WebDriver webDriver) {
         super(webDriver);
@@ -20,7 +23,11 @@ public class PaymentMethodElements extends CommonActionsWithElements {
         makeCheckboxChecked(cashOnDeliveryPaymentMethod);
     }
 
-    public void clickOnContinueButton() {
-        clickOnElement(continueButton);
+    public void clickOnPaymentMethodContinueButton() {
+        clickOnElement(paymentMethodContinueButton);
+    }
+
+    public void checkIsPaymentMethodTitleVisible() {
+        checkIsElementVisible(paymentMethodTitle);
     }
 }

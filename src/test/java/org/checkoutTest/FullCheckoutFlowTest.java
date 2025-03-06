@@ -34,6 +34,8 @@ public class FullCheckoutFlowTest extends BaseTest {
         pageProvider.getCheckoutPage().checkIsRedirectToCheckoutPage();
         pageProvider.getCheckoutPage().getBillingAddressElements().checkIsBillingAddressTitleVisible();
         pageProvider.getCheckoutPage().getBillingAddressElements()
+                .selectValueInBillingAddressDropdownIfItVisible("");
+        pageProvider.getCheckoutPage().getBillingAddressElements()
                 .fillInBillingAddressForm(
                         randomFirstName,
                         randomLastName,
@@ -48,6 +50,22 @@ public class FullCheckoutFlowTest extends BaseTest {
                         randomPhoneNumber,
                         randomFaxNumber)
                 .clickOnBillingAddressContinueButton();
+        pageProvider.getCheckoutPage().getShippingAddressElements().checkIsShippingAddressTitleVisible();
+        pageProvider.getCheckoutPage().getShippingAddressElements().checkPickUpInStoreCheckbox();
+        pageProvider.getCheckoutPage().getShippingAddressElements().clickOnShippingAddressContinueButton();
+        pageProvider.getCheckoutPage().getPaymentMethodElements().checkIsPaymentMethodTitleVisible();
+        pageProvider.getCheckoutPage().getPaymentMethodElements().checkCashOnDeliveryPaymentMethod();
+        pageProvider.getCheckoutPage().getPaymentMethodElements().clickOnPaymentMethodContinueButton();
+        pageProvider.getCheckoutPage().getPaymentInformationElements().checkIsPaymentInformationTitleVisible();
+        pageProvider.getCheckoutPage().getPaymentInformationElements().clickOnPaymentInformationContinueButton();
+        pageProvider.getCheckoutPage().getConfirmOrderElements().checkIsConfirmOrderTitleVisible();
+        pageProvider.getCheckoutPage().getConfirmOrderElements().clickOnConfirmButton();
+        pageProvider.getCompletedCheckoutPage().checkIsRedirectToCompletedCheckoutPage();
+        pageProvider.getCompletedCheckoutPage().checkIsOrderCompletedSuccessMessageVisible();
+        pageProvider.getCompletedCheckoutPage().checkOrderCompletedSuccessMessage();
+        pageProvider.getCompletedCheckoutPage().clickOnCompletedCheckoutContinueButton();
+        pageProvider.getHomePage().checkIsRedirectToHomePage();
+
         ;
     }
 }
