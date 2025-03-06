@@ -22,6 +22,9 @@ public class HeaderElements extends CommonActionsWithElements {
     @FindBy(xpath = "//div[@class='header-links']//a[@href='/customer/info']")
     private WebElement buttonCustomerInfo;
 
+    @FindBy(xpath = "//div[@class='header-links']//a[@href='/cart']")
+    private WebElement buttonShoppingCart;
+
     public HeaderElements(WebDriver webDriver) {
         super(webDriver);
     }
@@ -71,5 +74,9 @@ public class HeaderElements extends CommonActionsWithElements {
 
     public void checkIsButtonCustomerInfoInvisible() {
         checkIsElementInvisible(buttonCustomerInfo);
+    }
+
+    public void clickOnButtonShoppingCart() {
+        clickOnElement(buttonShoppingCart);
     }
 }

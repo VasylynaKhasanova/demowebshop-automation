@@ -6,11 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class ShippingAddressElements extends CommonActionsWithElements {
+    @FindBy(xpath = "//li[@class='tab-section allow active']//h2[text()='Shipping address']")
+    private WebElement shippingAddressTitle;
+
     @FindBy(id="PickUpInStore")
     private WebElement pickUpInStoreCheckbox;
 
-    @FindBy(xpath = "//input[@type='button']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//li[@id='opc-shipping']//input[@title='Continue']")
+    private WebElement shippingAddressContinueButton;
 
     public ShippingAddressElements(WebDriver webDriver) {
         super(webDriver);
@@ -20,7 +23,11 @@ public class ShippingAddressElements extends CommonActionsWithElements {
         makeCheckboxChecked(pickUpInStoreCheckbox);
     }
 
-    public void clickOnContinueButton() {
-        clickOnElement(continueButton);
+    public void clickOnShippingAddressContinueButton() {
+        clickOnElement(shippingAddressContinueButton);
+    }
+
+    public void checkIsShippingAddressTitleVisible() {
+        checkIsElementVisible(shippingAddressTitle);
     }
 }

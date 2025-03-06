@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class BillingAddressElements extends CommonActionsWithElements {
+    @FindBy(xpath = "//li[@class='tab-section allow active']//h2[text()='Billing address']")
+    private WebElement billingAddressTitle;
+
     @FindBy(id = "BillingNewAddress_FirstName")
     private WebElement firstNameInput;
 
@@ -42,8 +45,11 @@ public class BillingAddressElements extends CommonActionsWithElements {
     @FindBy(id = "BillingNewAddress_FaxNumber")
     private WebElement faxNumberInput;
 
-    @FindBy(xpath = "//input[@type='button']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//div[@id='billing-buttons-container']//input[@title='Continue']")
+    private WebElement billingAddressContinueButton;
+
+    @FindBy(id="billing-address-select")
+    private WebElement billingAddressDropdown;
 
     public BillingAddressElements(WebDriver webDriver) {
         super(webDriver);
@@ -66,11 +72,11 @@ public class BillingAddressElements extends CommonActionsWithElements {
     }
 
     public void selectCountry(String country) {
-        selectValueInDropDawn(countryDropDown, country);
+        selectValueInDropdown(countryDropDown, country);
     }
 
     public void selectState(String state) {
-        selectValueInDropDawn(stateDropDown, state);
+        selectValueInDropdown(stateDropDown, state);
     }
 
     public void enterCity(String city) {
@@ -97,8 +103,39 @@ public class BillingAddressElements extends CommonActionsWithElements {
         clearAndEnterTextIntoElement(faxNumberInput, faxNumber);
     }
 
-    public void clickOnContinueButton() {
-        clickOnElement(continueButton);
+    public void clickOnBillingAddressContinueButton() {
+        clickOnElement(billingAddressContinueButton);
     }
 
+    public void checkIsBillingAddressTitleVisible() {
+        checkIsElementVisible(billingAddressTitle);
+    }
+
+    public BillingAddressElements fillInBillingAddressForm(String firstName, String lastName, String email, String company, String country,
+                                         String state, String city, String address1, String address2, String zipPostalCode, String phoneNumber, String faxNumber) {
+        enterFirstName(firstName);
+        enterLastName(lastName);
+        enterEmail(email);
+        enterCompany(company);
+        selectCountry(country);
+        selectState(state);
+        enterCity(city);
+        enterAddress1(address1);
+        enterAddress2(address2);
+        enterZipPostalCode(zipPostalCode);
+        enterPhoneNumber(phoneNumber);
+        enterFaxNumber(faxNumber);
+        return this;
+    }
+
+
+  public void selectValueInBillingAddressDropdown(String address) {
+    selectValueInDropdown(billingAddressDropdown, address);
+  }
+
+    public void selectValueInBillingAddressDropdownIfItVisible (String address) {
+        if (isElementVisible(billingAddressDropdown)) {
+            selectValueInBillingAddressDropdown(address);
+        }
+    }
 }

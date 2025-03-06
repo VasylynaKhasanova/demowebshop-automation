@@ -6,14 +6,21 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class PaymentInformationElements extends CommonActionsWithElements {
-    @FindBy(xpath = "//input[@value='Continue']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//li[@class='tab-section allow active']//h2[text()='Payment information']")
+    private WebElement paymentInformationTitle;
+
+    @FindBy(xpath = "//div[@id='payment-info-buttons-container']//input[@value='Continue']")
+    private WebElement paymentInformationContinueButton;
 
     public PaymentInformationElements(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public void clickOnContinueButton() {
-        clickOnElement(continueButton);
+    public void clickOnPaymentInformationContinueButton() {
+        clickOnElement(paymentInformationContinueButton);
+    }
+
+    public void checkIsPaymentInformationTitleVisible() {
+        checkIsElementVisible(paymentInformationTitle);
     }
 }
