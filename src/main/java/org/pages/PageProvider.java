@@ -20,4 +20,12 @@ public class PageProvider {
     public BooksPage getBooksPage() {
         return new BooksPage(webDriver);
     }
+
+    public ShoppingCartPage getShoppingCartPage() {
+        return new ShoppingCartPage(webDriver);
+    }
+
+    public CheckoutPage getCheckoutPage() {
+        return new CheckoutPage(webDriver);
+    }
 }

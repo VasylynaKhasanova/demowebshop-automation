@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.pages.CommonActionsWithElements;
 
 public class BillingAddressElements extends CommonActionsWithElements {
+    @FindBy(xpath = "//h2[text()='Billing address']")
+    private WebElement billingAddressTitle;
+
     @FindBy(id = "BillingNewAddress_FirstName")
     private WebElement firstNameInput;
 
@@ -42,8 +45,8 @@ public class BillingAddressElements extends CommonActionsWithElements {
     @FindBy(id = "BillingNewAddress_FaxNumber")
     private WebElement faxNumberInput;
 
-    @FindBy(xpath = "//input[@type='button']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//div[@id='billing-buttons-container']//input[@title='Continue']")
+    private WebElement billingAddressContinueButton;
 
     public BillingAddressElements(WebDriver webDriver) {
         super(webDriver);
@@ -97,8 +100,28 @@ public class BillingAddressElements extends CommonActionsWithElements {
         clearAndEnterTextIntoElement(faxNumberInput, faxNumber);
     }
 
-    public void clickOnContinueButton() {
-        clickOnElement(continueButton);
+    public void clickOnBillingAddressContinueButton() {
+        clickOnElement(billingAddressContinueButton);
     }
 
+    public void checkIsBillingAddressTitleVisible() {
+        checkIsElementVisible(billingAddressTitle);
+    }
+
+    public BillingAddressElements fillInBillingAddressForm(String firstName, String lastName, String email, String company, String country,
+                                         String state, String city, String address1, String address2, String zipPostalCode, String phoneNumber, String faxNumber) {
+        enterFirstName(firstName);
+        enterLastName(lastName);
+        enterEmail(email);
+        enterCompany(company);
+        selectCountry(country);
+        selectState(state);
+        enterCity(city);
+        enterAddress1(address1);
+        enterAddress2(address2);
+        enterZipPostalCode(zipPostalCode);
+        enterPhoneNumber(phoneNumber);
+        enterFaxNumber(faxNumber);
+        return this;
+    }
 }

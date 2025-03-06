@@ -3,22 +3,23 @@ package org.registrationTests;
 import org.baseTest.BaseTest;
 import org.data.TestData;
 import org.junit.Test;
-import org.utils.Utils_Custom;
 
 public class RegistrationTest extends BaseTest {
     @Test
     public void T0007_validRegistrationTest() {
-        String randomFirstName = TestData.getRandomFirstName();
-        String randomLastName = TestData.getRandomLastName();
-        String randomEmail = "test" + Utils_Custom.getDateAndTimeFormattedOnlyNumbers() + "@gmail.com";
-        String randomPassword = TestData.getRandomPassword();
+        TestData testData = new TestData();
+        String randomFirstName = testData.getRandomFirstName();
+        String randomLastName = testData.getRandomLastName();
+        String randomEmail = testData.getRandomEmail();
+        String randomPassword = testData.getRandomPassword();
+        String randomGender = testData.getRandomGender();
 
         pageProvider.getHomePage()
                 .openHomePage()
                 .getHeaderElement()
                 .clickOnButtonRegister()
                 .checkIsRedirectToRegistrationPage()
-                .clickOnGenderRadioButton(TestData.getRandomGender())
+                .clickOnGenderRadioButton(randomGender)
                 .enterTextIntoInputFirstName(randomFirstName)
                 .enterTextIntoInputLastName(randomLastName)
                 .enterTextIntoInputEmail(randomEmail)

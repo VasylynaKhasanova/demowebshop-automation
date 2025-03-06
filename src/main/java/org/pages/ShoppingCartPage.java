@@ -28,8 +28,12 @@ public class ShoppingCartPage extends ParentPage {
         checkIsElementVisible(checkoutButton);
     }
 
-    public void checkTermsOfServiceCheckbox(){
+    public void checkTermsOfServiceCheckbox() {
         makeCheckboxChecked(termsOfServiceCheckbox);
+    }
+
+    public void checkIsRedirectToShoppingCartPage() {
+        checkUrl();
     }
 
 }

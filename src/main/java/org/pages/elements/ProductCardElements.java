@@ -32,6 +32,10 @@ public class ProductCardElements extends CommonActionsWithElements {
         this.productCardElement = productCardElement;
     }
 
+    public WebElement getAddToCartButton() {
+        return addToCartButton;
+    }
+
     public void clickOnAddToCart() {
         clickOnElement(addToCartButton);
     }
@@ -40,3 +44,5 @@ public class ProductCardElements extends CommonActionsWithElements {
         checkIsElementVisible(addToCartButton);
     }
 }
+
+
