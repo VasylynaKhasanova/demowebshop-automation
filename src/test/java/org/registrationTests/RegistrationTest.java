@@ -28,7 +28,7 @@ public class RegistrationTest extends BaseTest {
                 .clickOnButtonRegister()
                 .checkIsRedirectToRegistartionResultPage()
                 .checkIsSuccessRegistrationMessageDisplayed()
-                .checkTextInSuccessRegistrationMessage("Your registration completed")
+                .checkTextInSuccessRegistrationMessage()
                 .checkIsButtonContinueVisible()
                 .clickOnButtonContinue()
                 .checkIsRedirectToHomePage()

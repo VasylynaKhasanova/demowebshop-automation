@@ -106,7 +106,7 @@ public class LoginPage extends ParentPage {
 
     public LoginPage openLoginPage() {
         webDriver.get(baseUrl + getRelativeUrl());
-        logger.info("Home Page was opened with url " + baseUrl+getRelativeUrl());
+        logger.info("Home Page was opened with url " + baseUrl + getRelativeUrl());
         return this;
     }
 
