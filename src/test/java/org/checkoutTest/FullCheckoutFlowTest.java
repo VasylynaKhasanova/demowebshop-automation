@@ -1,12 +1,15 @@
 package org.checkoutTest;
 
 import org.baseTest.BaseTest;
+import org.categories.SmokeTestsFilter;
 import org.junit.Test;
 import org.data.TestData;
+import org.junit.experimental.categories.Category;
 
 public class FullCheckoutFlowTest extends BaseTest {
 
     @Test
+    @Category(SmokeTestsFilter.class)
     public void T0008_fullValidCheckoutFlowTest() {
         String randomFirstName = TestData.getRandomFirstName();
         String randomLastName = TestData.getRandomLastName();
