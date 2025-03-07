@@ -88,6 +88,15 @@ public class CommonActionsWithElements {
         logger.info("Text in element " + getElementName(webElement) + " is as expected");
     }
 
+    protected void checkIfElementContainsText(WebElement webElement, String text) {
+        String elementText = webElement.getText();
+        Assert.assertTrue(
+                "Text in element " + getElementName(webElement) + " does not contain the expected text",
+                elementText.contains(text)
+        );
+        logger.info("Text in element " + getElementName(webElement) + " contains the expected text");
+    }
+
     protected void makeCheckboxChecked(WebElement webElement) {
         if (webElement.isSelected()) {
             logger.info("Checkbox is already checked");
@@ -104,6 +113,14 @@ public class CommonActionsWithElements {
             logger.info(valueInDD + " value is selected in DropDown " + getElementName(dropDownElement));
         } catch (Exception e) {
             printErrorAndStopTest(e);
+        }
+    }
+
+    public String extractDigits(String text) {
+        if (text != null) {
+            return text.replaceAll("\\D+", "");
+        } else {
+            return "";
         }
     }
 

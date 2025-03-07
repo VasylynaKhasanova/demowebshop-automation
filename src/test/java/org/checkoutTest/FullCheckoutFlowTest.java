@@ -18,9 +18,14 @@ public class FullCheckoutFlowTest extends BaseTest {
         String randomPhoneNumber = TestData.getRandomPhoneNumber();
         String randomFaxNumber = TestData.getRandomFaxNumber();
 
-        pageProvider.getLoginPage().
-                openLoginPageAndFillLoginFormWithValidCred()
-                .checkIsRedirectToHomePage()
+        pageProvider.getLoginPage()
+                .openLoginPageAndFillLoginFormWithValidCred()
+                .checkIsRedirectToHomePage();
+        pageProvider.getShoppingCartPage().checkAndRemoveAllProductsFromCart();
+        pageProvider.getHomePage()
+                .getNavigationMenuElement()
+                .checkIsButtonBooksVisible();
+        pageProvider.getHomePage()
                 .getNavigationMenuElement()
                 .clickOnButtonBooks()
                 .checkIsRedirectToBooksPage()
@@ -61,11 +66,14 @@ public class FullCheckoutFlowTest extends BaseTest {
         pageProvider.getCheckoutPage().getConfirmOrderElements().checkIsConfirmOrderTitleVisible();
         pageProvider.getCheckoutPage().getConfirmOrderElements().clickOnConfirmButton();
         pageProvider.getCompletedCheckoutPage().checkIsRedirectToCompletedCheckoutPage();
-        pageProvider.getCompletedCheckoutPage().checkIsOrderCompletedSuccessMessageVisible();
-        pageProvider.getCompletedCheckoutPage().checkOrderCompletedSuccessMessage();
-        pageProvider.getCompletedCheckoutPage().clickOnCompletedCheckoutContinueButton();
-        pageProvider.getHomePage().checkIsRedirectToHomePage();
-
+        pageProvider.getCompletedCheckoutPage().checkIsOrderCompletedSuccessMessageVisible()
+                .checkOrderCompletedSuccessMessage()
+                .checkIsOrderNumberDetailsVisible()
+                .checkIsOrderDetailsLinkVisible();
+        pageProvider.getCompletedCheckoutPage().clickOnOrderDetailsLink()
+                .checkIsOrderNumberVisible()
+                .checkIfOrderNumberIsCorrect()
+                .checkIsRedirectToOrderInformationPage()
         ;
     }
 }

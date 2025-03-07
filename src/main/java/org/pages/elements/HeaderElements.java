@@ -25,6 +25,9 @@ public class HeaderElements extends CommonActionsWithElements {
     @FindBy(xpath = "//div[@class='header-links']//a[@href='/cart']")
     private WebElement buttonShoppingCart;
 
+    @FindBy(xpath = "//span[@class='cart-qty']")
+    private WebElement cartQuantity;
+
     public HeaderElements(WebDriver webDriver) {
         super(webDriver);
     }
@@ -78,5 +81,9 @@ public class HeaderElements extends CommonActionsWithElements {
 
     public void clickOnButtonShoppingCart() {
         clickOnElement(buttonShoppingCart);
+    }
+
+    public String getCartQuantity() {
+        return cartQuantity.getText();
     }
 }

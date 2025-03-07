@@ -1,7 +1,7 @@
 package org.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.pages.elements.*;
+import org.pages.elements.checkout_elements.*;
 
 public class CheckoutPage extends ParentPage {
 
