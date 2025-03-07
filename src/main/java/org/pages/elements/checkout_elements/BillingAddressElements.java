@@ -48,7 +48,7 @@ public class BillingAddressElements extends CommonActionsWithElements {
     @FindBy(xpath = "//div[@id='billing-buttons-container']//input[@title='Continue']")
     private WebElement billingAddressContinueButton;
 
-    @FindBy(id="billing-address-select")
+    @FindBy(id = "billing-address-select")
     private WebElement billingAddressDropdown;
 
     public BillingAddressElements(WebDriver webDriver) {
@@ -112,7 +112,7 @@ public class BillingAddressElements extends CommonActionsWithElements {
     }
 
     public BillingAddressElements fillInBillingAddressForm(String firstName, String lastName, String email, String company, String country,
-                                         String state, String city, String address1, String address2, String zipPostalCode, String phoneNumber, String faxNumber) {
+                                                           String state, String city, String address1, String address2, String zipPostalCode, String phoneNumber, String faxNumber) {
         enterFirstName(firstName);
         enterLastName(lastName);
         enterEmail(email);
@@ -128,12 +128,11 @@ public class BillingAddressElements extends CommonActionsWithElements {
         return this;
     }
 
+    public void selectValueInBillingAddressDropdown(String address) {
+        selectValueInDropdown(billingAddressDropdown, address);
+    }
 
-  public void selectValueInBillingAddressDropdown(String address) {
-    selectValueInDropdown(billingAddressDropdown, address);
-  }
-
-    public void selectValueInBillingAddressDropdownIfItVisible (String address) {
+    public void selectValueInBillingAddressDropdownIfItVisible(String address) {
         if (isElementVisible(billingAddressDropdown)) {
             selectValueInBillingAddressDropdown(address);
         }

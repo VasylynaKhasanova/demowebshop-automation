@@ -3,6 +3,7 @@ package org.pages.elements.checkout_elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.pages.CommonActionsWithElements;
 
 public class ConfirmOrderElements extends CommonActionsWithElements {
@@ -21,6 +22,7 @@ public class ConfirmOrderElements extends CommonActionsWithElements {
     }
 
     public void checkIsConfirmOrderTitleVisible() {
+        webDriverWait15.until(ExpectedConditions.visibilityOf(confirmOrderTitle));
         checkIsElementVisible(confirmOrderTitle);
     }
 }

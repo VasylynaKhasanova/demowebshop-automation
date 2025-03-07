@@ -41,8 +41,8 @@ public class RegistartionResultPage extends ParentPage {
         return this;
     }
 
-    public RegistartionResultPage checkTextInSuccessRegistrationMessage(String expectedMessageText) {
-        checkTextInElement(successRegistrationMessage, expectedMessageText);
+    public RegistartionResultPage checkTextInSuccessRegistrationMessage() {
+        checkTextInElement(successRegistrationMessage, "Your registration completed");
         return this;
     }
 }

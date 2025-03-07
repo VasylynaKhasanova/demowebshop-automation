@@ -13,7 +13,7 @@ import static org.data.TestData.*;
 public class AuthenticationErrorsTest extends BaseTest {
 
         @Test
-        @Parameters(method = "parametersForValidationErrorTest")
+        @Parameters(method = "parametersForAuthenticationErrorTest")
         public void T0004_authenticationErrorTest(String email, String password, String expectedMessage) {
             pageProvider.getHomePage()
                     .openHomePage()

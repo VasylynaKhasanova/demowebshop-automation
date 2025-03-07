@@ -10,7 +10,6 @@ public class CompletedCheckoutPage extends ParentPage {
     private String orderNumber;
     private Logger logger = Logger.getLogger(getClass());
 
-
     @FindBy(xpath = "//input[@value='Continue']")
     private WebElement completedCheckoutContinueButton;
 
