@@ -33,5 +33,4 @@ public class PageProvider {
         return new CompletedCheckoutPage(webDriver);
     }
 
-
 }

@@ -1,4 +1,4 @@
-package org.pages.elements;
+package org.pages.elements.checkout_elements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
